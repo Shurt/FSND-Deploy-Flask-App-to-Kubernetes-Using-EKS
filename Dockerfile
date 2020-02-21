@@ -1,11 +1,12 @@
-FROM python:stretch
+FROM python:3.7
 
-COPY . /app
+COPY ./jwt-api-test /app
 WORKDIR /app
 
-RUN pip install --upgrade pip
-RUN pip install -r requirements.txt
+RUN pip3 install --upgrade pip
+RUN pip3 install -r requirements.txt
 
-EXPOSE 8080:80
+ENV GUNICORN_CMD_ARGS="--bind=:8080"
+EXPOSE 8080:8080
 
-ENTRYPOINT [ "gunicorn -b :8080 main:APP" ]
+ENTRYPOINT [ "gunicorn", "main:APP" ]

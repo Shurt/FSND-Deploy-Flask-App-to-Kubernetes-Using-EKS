@@ -1,6 +1,6 @@
 FROM python:3.7
 
-COPY . /app
+COPY ./jwt-api-test /app
 WORKDIR /app
 
 RUN pip3 install --upgrade pip
